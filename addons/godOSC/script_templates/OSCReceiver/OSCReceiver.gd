@@ -10,5 +10,5 @@ func _custom_control(address : String, vals : Array, time):
 	
 	if vals != []:
 		#put your code here. This if statement prevents your code from being ran if you receive an empty message
-
+		pass
 	pass
