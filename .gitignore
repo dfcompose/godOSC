@@ -24,3 +24,8 @@ mono_crash.*.json
 
 
 ./project.godot
+icon.svg.import
+script_templates/.gdignore
+script_templates/OSCMessage/OSCMessage.gd
+script_templates/OSCReceiver/OSCReceiver.gd
+store_image.png.import
