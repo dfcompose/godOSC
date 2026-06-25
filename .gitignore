@@ -20,3 +20,4 @@ mono_crash.*.json
 # Directories
 .DS_Store
 .directory
+./script_templates/
