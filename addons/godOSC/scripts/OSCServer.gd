@@ -23,7 +23,7 @@ var server = UDPServer.new()
 var peers: Array[PacketPeerUDP] = []
 
 signal message_received(address, value, time)
-
+signal peer_connected(peer_ip, peer_port)
 
 func _ready():
 	server.listen(port)
@@ -38,10 +38,14 @@ func _process(_delta):
 	server.poll()
 	if server.is_connection_available():
 		var peer: PacketPeerUDP = server.take_connection()
-		print("Accepted peer: %s:%s" % [peer.get_packet_ip(), peer.get_packet_port()])
+		
+		#print("Accepted peer: %s:%s" % [peer.get_packet_ip(), peer.get_packet_port()])
+		
+		peer_connected.emit(peer.get_packet_ip(), peer.get_packet_port())
 		# Keep a reference so we can keep contacting the remote peer.
 		peers.append(peer)
-	
+	elif len(peers) == 0:
+		push_warning("OSCServer has no incoming connections.")
 	parse()
 
 
