@@ -38,6 +38,9 @@ var previous_value = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
+	if Engine.is_editor_hint():
+		return
+	
 	if send_message_on == 2:
 		var timer = Timer.new()
 		timer.timeout.connect(using_timer)
@@ -53,6 +56,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
+	if Engine.is_editor_hint():
+		return
 	
 	get_parent_value()
 	

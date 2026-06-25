@@ -22,8 +22,8 @@ func connect_socket(new_ip = "127.0.0.1", new_port = 4646):
 	client.connect_to_host(new_ip, new_port)
 	
 	if not client.is_socket_connected():
-		push_warning("OSCClient did not successfully connect to host.")
-		print_rich("[color=red][b]OSCClient did not sucessfully connect to host[/b][/color]")
+		push_error("OSCClient did not successfully connect to host.")
+		#print_rich("[color=red][b]OSCClient did not sucessfully connect to host[/b][/color]")
 
 
 func close_socket():

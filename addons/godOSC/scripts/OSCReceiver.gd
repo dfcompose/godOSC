@@ -47,6 +47,9 @@ var incoming_values = []
 var previous_value = []
 func _ready() -> void:
 	
+	if Engine.is_editor_hint():
+		return
+		
 	target_server.message_received.connect(received_message)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -55,6 +58,8 @@ func _ready() -> void:
 # target_server.incoming_messages[osc_address][0]
 func _process(delta):
 	
+	if Engine.is_editor_hint():
+		return
 	
 	if incoming_values == [] or full_message[0] != osc_address:
 		return
