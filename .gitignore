@@ -21,3 +21,6 @@ mono_crash.*.json
 .DS_Store
 .directory
 ./script_templates/
+
+
+./project.godot
