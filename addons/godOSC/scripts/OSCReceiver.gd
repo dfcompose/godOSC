@@ -1,4 +1,5 @@
 @icon("res://addons/godOSC/images/OSCReceiver.svg")
+@tool
 class_name OSCReceiver
 extends Node
 ## Generic node for Receiving OSC messages. Must have an active OSCServer in the scene to work. 
@@ -6,7 +7,11 @@ extends Node
 ## script attached to the OSCReceiver you create by right clicking and "extend script"
 
 ## The OSCServer to receive messages from
-@export var target_server : OSCServer
+@export var target_server : OSCServer:
+	set(new_server):
+		if new_server != target_server:
+			target_server = new_server
+		update_configuration_warnings()
 
 ## The OSC address to receive
 @export var osc_address := "/example"
@@ -158,3 +163,12 @@ func received_message(address, vals, time):
 		
 	
 	pass
+
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings = []
+	
+	if !(target_server is OSCServer):
+		warnings.append("OSCReceiver has no target_server set")
+	
+	return warnings

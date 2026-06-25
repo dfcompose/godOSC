@@ -15,14 +15,16 @@ var client = PacketPeerUDP.new()
 func _ready():
 	connect_socket(ip_address, port)
 	
-	if not client.is_socket_connected():
-		push_warning("OSCClient did not successfully connect to host.")
 	
-
 ## Connect to an OSC server. Can only send to one OSC server at a time.
 func connect_socket(new_ip = "127.0.0.1", new_port = 4646):
 	close_socket()
 	client.connect_to_host(new_ip, new_port)
+	
+	if not client.is_socket_connected():
+		push_warning("OSCClient did not successfully connect to host.")
+		print_rich("[color=red][b]OSCClient did not sucessfully connect to host[/b][/color]")
+
 
 func close_socket():
 	if client.is_socket_connected():

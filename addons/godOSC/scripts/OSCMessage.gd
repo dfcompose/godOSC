@@ -1,10 +1,15 @@
 @icon("res://addons/godOSC/images/OSCMessage.svg")
+@tool
 class_name OSCMessage
 extends Node
 ## Convenience class for organizing an OSC message. Used with an OSCClient. To add your own code, extend the script attached to the OSCReceiver you create by right clicking and "extend script"
 
 ## The client to send the OSC message with
-@export var target_client : OSCClient
+@export var target_client : OSCClient:
+	set(new_client):
+		if new_client != target_client:
+			target_client = new_client
+		update_configuration_warnings()
 
 ## The OSC address to send to
 @export var osc_address := "/example"
@@ -38,7 +43,10 @@ func _ready():
 		timer.timeout.connect(using_timer)
 		timer.wait_time = message_timer_rate
 		timer.start()
-	
+	#
+	#if !(target_client is OSCClient):
+		#print_rich("[color=yellow][b]OSCMessage has no target client. Consider designating one.[/b][/color]")
+		#push_warning("OSCMessage has no target client. Consider designating one.")
 	pass # Replace with function body.
 
 
@@ -123,3 +131,12 @@ func _custom_message_contents() -> Variant:
 
 func using_timer():
 	send_message(current_value)
+
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings = []
+	
+	if !(target_client is OSCClient):
+		warnings.append("OSCMessage's target_client is not set.")
+	
+	return warnings
