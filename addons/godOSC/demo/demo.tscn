@@ -1,45 +1,45 @@
-[gd_scene load_steps=9 format=3 uid="uid://nqupygtbema1"]
+[gd_scene format=3 uid="uid://nqupygtbema1"]
 
-[ext_resource type="Script" path="res://addons/godOSC/scripts/OSCClient.gd" id="1_8dhcu"]
-[ext_resource type="Script" path="res://addons/godOSC/demo/demo.gd" id="1_jcc48"]
-[ext_resource type="Script" path="res://addons/godOSC/scripts/OSCServer.gd" id="2_ey2x6"]
-[ext_resource type="Script" path="res://addons/godOSC/demo/demo_receiver_cube1.gd" id="4_3wmat"]
-[ext_resource type="Script" path="res://addons/godOSC/scripts/OSCReceiver.gd" id="5_721s1"]
-[ext_resource type="Script" path="res://addons/godOSC/demo/onoff.gd" id="6_4gcvd"]
-[ext_resource type="Script" path="res://addons/godOSC/demo/MessageContainer.gd" id="8_7cxcq"]
-[ext_resource type="Script" path="res://addons/godOSC/scripts/OSCMessage.gd" id="8_m14bm"]
+[ext_resource type="Script" uid="uid://xi7uy8bnjk3a" path="res://addons/godOSC/scripts/OSCClient.gd" id="1_8dhcu"]
+[ext_resource type="Script" uid="uid://n446mw85sbns" path="res://addons/godOSC/demo/demo.gd" id="1_jcc48"]
+[ext_resource type="Script" uid="uid://w8v0v76wc4r2" path="res://addons/godOSC/scripts/OSCServer.gd" id="2_ey2x6"]
+[ext_resource type="Script" uid="uid://bo023cplul547" path="res://addons/godOSC/demo/demo_receiver_cube1.gd" id="4_3wmat"]
+[ext_resource type="Script" uid="uid://tdoy6n5ivl2p" path="res://addons/godOSC/scripts/OSCReceiver.gd" id="5_721s1"]
+[ext_resource type="Script" uid="uid://dxq8lko4ilo38" path="res://addons/godOSC/demo/onoff.gd" id="6_4gcvd"]
+[ext_resource type="Script" uid="uid://njq2yjcx4gqt" path="res://addons/godOSC/demo/MessageContainer.gd" id="8_7cxcq"]
+[ext_resource type="Script" uid="uid://b0pkndrhr65ph" path="res://addons/godOSC/scripts/OSCMessage.gd" id="8_m14bm"]
 
-[node name="Demo" type="Node2D"]
+[node name="Demo" type="Node2D" unique_id=1145152717]
 script = ExtResource("1_jcc48")
 
-[node name="OSCClient" type="Node" parent="."]
+[node name="OSCClient" type="Node" parent="." unique_id=223101287]
 script = ExtResource("1_8dhcu")
 
-[node name="OSCServer" type="Node" parent="."]
+[node name="OSCServer" type="Node" parent="." unique_id=567894236]
 script = ExtResource("2_ey2x6")
 timecode_as_unix = true
 
-[node name="Cube 1" type="ColorRect" parent="."]
+[node name="Cube 1" type="ColorRect" parent="." unique_id=1172616326]
 offset_left = 154.0
 offset_top = 116.0
 offset_right = 194.0
 offset_bottom = 156.0
 scale = Vector2(1.205, 1.205)
 
-[node name="OSCReceiver" type="Node" parent="Cube 1" node_paths=PackedStringArray("target_server")]
+[node name="OSCReceiver" type="Node" parent="Cube 1" unique_id=1133374705 node_paths=PackedStringArray("target_server")]
 script = ExtResource("4_3wmat")
 target_server = NodePath("../../OSCServer")
 osc_address = "/cube1"
 on_message_received = false
 
-[node name="Cube 2" type="ColorRect" parent="."]
+[node name="Cube 2" type="ColorRect" parent="." unique_id=58209195]
 offset_left = 923.0
 offset_top = 144.0
 offset_right = 963.0
 offset_bottom = 184.0
 scale = Vector2(1.075, 1.075)
 
-[node name="OSCReceiver" type="Node" parent="Cube 2" node_paths=PackedStringArray("target_server")]
+[node name="OSCReceiver" type="Node" parent="Cube 2" unique_id=606782482 node_paths=PackedStringArray("target_server")]
 script = ExtResource("5_721s1")
 target_server = NodePath("../../OSCServer")
 osc_address = "/cube2"
@@ -48,7 +48,7 @@ apply_to_all_axis = true
 interpolation = true
 interpolation_factor = 0.013
 
-[node name="Cube 1 Slider" type="HSlider" parent="."]
+[node name="Cube 1 Slider" type="HSlider" parent="." unique_id=133341514]
 offset_left = 164.0
 offset_top = 393.0
 offset_right = 697.0
@@ -57,12 +57,12 @@ min_value = 154.0
 max_value = 675.0
 value = 300.0
 
-[node name="OSCMessage" type="Node" parent="Cube 1 Slider" node_paths=PackedStringArray("target_client")]
+[node name="OSCMessage" type="Node" parent="Cube 1 Slider" unique_id=2125469644 node_paths=PackedStringArray("target_client")]
 script = ExtResource("8_m14bm")
 target_client = NodePath("../../OSCClient")
 osc_address = "/cube1"
 
-[node name="CheckButton" type="CheckButton" parent="Cube 1 Slider"]
+[node name="CheckButton" type="CheckButton" parent="Cube 1 Slider" unique_id=998565231]
 layout_mode = 0
 offset_left = -4.0
 offset_top = -36.0
@@ -71,7 +71,7 @@ offset_bottom = -12.0
 button_pressed = true
 script = ExtResource("6_4gcvd")
 
-[node name="Cube 2 Slider" type="HSlider" parent="."]
+[node name="Cube 2 Slider" type="HSlider" parent="." unique_id=393434194]
 offset_left = 796.0
 offset_top = 381.0
 offset_right = 1113.0
@@ -80,12 +80,12 @@ max_value = 2.0
 step = 0.01
 value = 1.0
 
-[node name="OSCMessage" type="Node" parent="Cube 2 Slider" node_paths=PackedStringArray("target_client")]
+[node name="OSCMessage" type="Node" parent="Cube 2 Slider" unique_id=540622145 node_paths=PackedStringArray("target_client")]
 script = ExtResource("8_m14bm")
 target_client = NodePath("../../OSCClient")
 osc_address = "/cube2"
 
-[node name="CheckButton" type="CheckButton" parent="Cube 2 Slider"]
+[node name="CheckButton" type="CheckButton" parent="Cube 2 Slider" unique_id=1752548312]
 layout_mode = 0
 offset_left = -9.0
 offset_top = -31.0
@@ -94,7 +94,7 @@ offset_bottom = -7.0
 button_pressed = true
 script = ExtResource("6_4gcvd")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1582876594]
 offset_left = 311.0
 offset_top = 444.0
 offset_right = 858.0
@@ -103,7 +103,7 @@ text = "Use the toggles to enable/disable the sliders from sending OSC messages.
 If you are testing using an external program, disable the sliders for more
 predictable behavior."
 
-[node name="MessageContainer" type="GridContainer" parent="."]
+[node name="MessageContainer" type="GridContainer" parent="." unique_id=425632878]
 offset_left = 23.0
 offset_top = 18.0
 offset_right = 230.0
@@ -113,28 +113,28 @@ columns = 3
 script = ExtResource("8_7cxcq")
 metadata/_edit_group_ = true
 
-[node name="Add" type="Label" parent="MessageContainer"]
+[node name="Add" type="Label" parent="MessageContainer" unique_id=650816861]
 layout_mode = 2
 text = "Address"
 
-[node name="Val" type="Label" parent="MessageContainer"]
+[node name="Val" type="Label" parent="MessageContainer" unique_id=381391348]
 layout_mode = 2
 text = "Value"
 
-[node name="Time" type="Label" parent="MessageContainer"]
+[node name="Time" type="Label" parent="MessageContainer" unique_id=234067583]
 layout_mode = 2
 text = "Time Stamp"
 
-[node name="Add1" type="Label" parent="MessageContainer"]
+[node name="Add1" type="Label" parent="MessageContainer" unique_id=414538170]
 layout_mode = 2
 
-[node name="Val1" type="Label" parent="MessageContainer"]
+[node name="Val1" type="Label" parent="MessageContainer" unique_id=885734866]
 layout_mode = 2
 
-[node name="Time1" type="Label" parent="MessageContainer"]
+[node name="Time1" type="Label" parent="MessageContainer" unique_id=1315926266]
 layout_mode = 2
 
-[node name="GateOn" type="Button" parent="."]
+[node name="GateOn" type="Button" parent="." unique_id=245828149]
 offset_left = 65.0
 offset_top = 566.0
 offset_right = 259.0
@@ -142,7 +142,7 @@ offset_bottom = 620.0
 text = "SEND \"/synth1/gate 1\" 
 ON PORT 4848"
 
-[node name="GateOff" type="Button" parent="."]
+[node name="GateOff" type="Button" parent="." unique_id=999233417]
 offset_left = 378.0
 offset_top = 566.0
 offset_right = 582.0
@@ -150,12 +150,12 @@ offset_bottom = 620.0
 text = "SEND \"/synth1/gate 0\"
  ON PORT 4848"
 
-[node name="OSCMessage" type="Node" parent="GateOff" node_paths=PackedStringArray("target_client")]
+[node name="OSCMessage" type="Node" parent="GateOff" unique_id=1137365553 node_paths=PackedStringArray("target_client")]
 script = ExtResource("8_m14bm")
 target_client = NodePath("../../OSCClient")
 metadata/_custom_type_script = "uid://b0pkndrhr65ph"
 
-[node name="OSCClient - OUT" type="Node" parent="."]
+[node name="OSCClient - OUT" type="Node" parent="." unique_id=1239049425]
 script = ExtResource("1_8dhcu")
 port = 4848
 
