@@ -30,3 +30,4 @@ script_templates/OSCMessage/OSCMessage.gd
 script_templates/OSCReceiver/OSCReceiver.gd
 store_image.png.import
 *.import
+/addons/godOSC/script_templates/*
