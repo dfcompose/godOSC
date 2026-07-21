@@ -7,18 +7,13 @@ func _enter_tree() -> void:
 	if !DirAccess.dir_exists_absolute("res://script_templates"):
 		DirAccess.make_dir_absolute("res://script_templates")
 	
-	if !DirAccess.dir_exists_absolute("res://script_templates/OSCMessage")
+	if !DirAccess.dir_exists_absolute("res://script_templates/OSCMessage"):
 		copy_folder_contents("res://addons/godOSC/script_templates", "res://script_templates")
 		pass
 
 
 # Clean-up of the plugin.
 func _exit_tree() -> void:
-	pass
-
-
-func import_script_templates():
-	
 	pass
 
 
