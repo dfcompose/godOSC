@@ -9,6 +9,7 @@ func _enter_tree() -> void:
 	
 	if !DirAccess.dir_exists_absolute("res://script_templates/OSCMessage"):
 		copy_folder_contents("res://addons/godOSC/script_templates", "res://script_templates")
+		FileAccess.open("res://script_templates/.gdignore", FileAccess.WRITE)
 		pass
 
 
